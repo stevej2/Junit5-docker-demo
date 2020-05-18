@@ -15,3 +15,5 @@ This class start a container once, before being used for all tests.
 - **ContainerStartedBeforeEachTestMethod_ParallelTest**
 This Class starts a new container, before each test method is executed, however this class executes all tests in parallel.
 e.g. 2 tests each with a 10 second sleep, complete in 13 seconds.
+
+All containers are removed when no longer required, after each test/class or suite.
