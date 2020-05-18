@@ -6,23 +6,23 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @Testcontainers
-@DisplayName("Starts the docker container once, used for all test methods")
-class ContainerStartedOnceTest {
+@DisplayName("Starts a new docker container before each test method is run")
+class NewContainerStartedBeforeEachTestMethodTest {
 
     static String ContainerID_1 = "";
     static String ContainerID_2 = "";
 
     @Container
-    private static final BrowserWebDriverContainer BROWSER_CONTAINER = new BrowserWebDriverContainer()
+    private final BrowserWebDriverContainer BROWSER_CONTAINER = new BrowserWebDriverContainer()
             .withCapabilities(new ChromeOptions());
 
-    private static WebDriver browser;
+    private WebDriver browser;
 
-    @BeforeAll
-    static void configureBrowser() {
+    @BeforeEach
+    void configureBrowser() {
         browser = BROWSER_CONTAINER.getWebDriver();
     }
 
@@ -41,11 +41,11 @@ class ContainerStartedOnceTest {
         ContainerID_2 = BROWSER_CONTAINER.getContainerId();
         System.out.println("Container ID Test 2: " + ContainerID_2);
         browser.get("https://www.google.co.uk");
-        assertEquals("Google", browser.getTitle());
+        assertEquals("Google",browser.getTitle());
     }
 
     @AfterAll
     static void checkDifferentContainersWereUsed() {
-        assertEquals(ContainerID_1, ContainerID_2, "Same container NOT used for all tests");
+        assertNotEquals(ContainerID_1, ContainerID_2, "Same container WAS used for all tests");
     }
 }
