@@ -1,7 +1,7 @@
-# Writing Selenium Tests Which Use a Dockerized Web Browser
+# Using Docker with Junit for sequential and parallel testing
 
-This example demonstrates how we can write Selenium tests using Dockerized
-web browser containers.
+This example demonstrates how we can use Docker in combination with Junit, including for parallel testing.
+This example uses a selenium Docker image for demonstraion purposes.
 
 
 # Docker usage methods
