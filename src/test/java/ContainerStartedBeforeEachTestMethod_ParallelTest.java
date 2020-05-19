@@ -1,8 +1,3 @@
-
-//import com.github.junit5docker.Docker;
-//import com.github.junit5docker.Environment;
-//import com.github.junit5docker.Port;
-//import com.github.junit5docker.WaitFor;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
@@ -10,22 +5,6 @@ import org.testcontainers.containers.GenericContainer;
 
 import java.time.Duration;
 import java.time.Instant;
-
-
-/*
-NOT YET WORKING
-*/
-
-//@DisplayName("Starts a new docker container before each test method is run")
-//
-//@Docker(image = "mysql", ports = @Port(exposed = 8801, inner = 3306),
-//        environments = {
-//                @Environment(key = "MYSQL_ROOT_PASSWORD", value = "root"),
-//                @Environment(key = "MYSQL_DATABASE", value = "testdb"),
-//                @Environment(key = "MYSQL_USER", value = "testuser"),
-//                @Environment(key = "MYSQL_PASSWORD", value = "s3cr3t"),
-//        },
-//        waitFor = @WaitFor("mysqld: ready for connections"))
 
 class ContainerStartedBeforeEachTestMethod_ParallelTest {
 
